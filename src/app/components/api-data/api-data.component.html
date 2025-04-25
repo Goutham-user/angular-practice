@@ -1,0 +1,20 @@
+
+<!-- <button (click)="addPostToTable(data)">Add data to API</button> -->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>title</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of apidata">
+            <td>{{data.id}}</td>
+            <td>{{data.userId}}</td>
+            <td>{{data.title}}</td>
+            <td>{{data.body}}</td>
+        </tr>
+    </tbody>
+</table>

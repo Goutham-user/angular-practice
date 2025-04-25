@@ -1,0 +1,23 @@
+<!-- {{ tableData | json }} -->
+hello {{tableData.length}}
+<table *ngIf="tableData.length > 0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of tableData; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{data.name}}</td>
+            <td> {{data.email}} </td>
+            <td>
+                <button (click)="onEdit(i)">Edit</button>
+                <button (click)="onDelete(i)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
