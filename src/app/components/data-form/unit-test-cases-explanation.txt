@@ -1,0 +1,61 @@
+Jasmine and Karma are available in Angular project by default.
+
+Jasmine is a behavior-driven development (BDD) testing framework for JavaScript that helps you write unit tests in a readable and structured way. It provides methods like describe, it, and expect to define test cases and make assertions.
+
+Karma is a test runner that executes JavaScript tests in real browsers. It integrates with testing frameworks like Jasmine and provides cross-browser testing, real-time feedback, and works well with Continuous Integration (CI) tools.
+
+Together, Jasmine is used to write tests, and Karma is used to run those tests in different browsers and report results.
+
+
+This file includes test cases of two components
+data-form.component(to add name and email to table and update) and data-table.component(ztable view of the data from the form)
+
+### DataFormComponent and DataTableComponent Test Cases - Detailed Explanation
+
+#### 1. data-form.component.spec.ts
+
+This file tests the DataFormComponent, focusing on the behavior of the form controls, form submission logic, and interaction with the DataService.
+
+##### Setup:
+- **TestBed.configureTestingModule**: 
+  - Sets up the testing environment with necessary imports (ReactiveFormsModule, HttpClientModule) and services (DataService).
+  - **MockDataService** is used to avoid actual service logic during testing.
+
+##### Tests:
+
+- **Test 1: should create the form with name and email controls**:
+  - Verifies that the form contains the `name` and `email` controls, ensuring proper initialization.
+
+- **Test 2: should initialize form with empty values**:
+  - Ensures the form starts with empty values for `name` and `email`.
+
+- **Test 3: should add new data on submit if not in edit mode**:
+  - Tests that the form correctly adds a new entry when not in edit mode. After submitting the form, the length of `currentData` should increase and match the new form data.
+
+- **Test 4: should update data on submit if in edit mode**:
+  - Verifies that the form updates existing data when the `editIndex` is not null. The data at the given index should be updated with the new values from the form.
+
+#### 2. data-table.component.spec.ts
+
+This file tests the DataTableComponent, which handles displaying a table of data and interacting with the `DataService` to manage that data.
+
+##### Setup:
+- **TestBed.configureTestingModule**:
+  - Similar to the DataFormComponent test but includes `CUSTOM_ELEMENTS_SCHEMA` to handle unknown elements.
+  - Uses `MockDataService` to isolate the component from the real service.
+
+##### Tests:
+
+- **Test 1: should render data in the table**:
+  - Verifies that the data from `MockDataService` is rendered correctly in the table.
+
+- **Test 2: should navigate to the form component on edit**:
+  - Ensures that when the edit button is clicked, the router navigates to the form component (`/add-data`).
+
+- **Test 3: should delete data on delete button click**:
+  - Simulates clicking the delete button and ensures that the data is removed from the `currentData` array.
+
+### Summary:
+- **Mocks**: The tests use a mock `DataService` to isolate the components from the actual service logic.
+- **Reactive Forms**: The `DataFormComponent` tests focus on ensuring proper form behavior (validity, submission).
+- **Router Testing**: The `DataTableComponent` tests check if navigation and data deletion work as expected.
